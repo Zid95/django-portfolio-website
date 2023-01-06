@@ -1,5 +1,11 @@
 from django.shortcuts import render
+from .models import *
 
 
 def index(request):
-    return render(request, 'index.html')
+    data_profile = Self.objects.all()
+
+    context = {
+        'profile': data_profile,
+    }
+    return render(request, 'index.html', context)

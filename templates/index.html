@@ -64,18 +64,28 @@
     <header id="header">
       <div class="d-flex flex-column">
         <div class="profile">
+          {% for data in profile %}
           <img
-            src=" {% static 'assets/img/profile-img.jpg' %} "
+            src=" {{data.image.url}} "
             alt=""
-            class="{% static 'img-fluid rounded-circle' %}"
+            class="img-fluid rounded-circle"
           />
-          <h1 class="text-light"><a href="index.html">Alex Smith</a></h1>
+
+          {% endfor %} {% for data in profile %}
+          <h1 class="text-light"><a href="index.html"> {{data.name}} </a></h1>
+          {% endfor %}
           <div class="social-links mt-3 text-center">
+            {% for data in profile %} {% if data.twitter %}
             <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            {% endif %} {% if data.facebook %}
             <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            {% endif %} {% if data.instagram %}
             <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+            {% endif %} {% if data.skype %}
+            <a href="#" class="skype"><i class="bx bxl-skype"></i></a>
+            {% endif %} {% if data.linkedin %}
             <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            {% endif %} {% endfor %}
           </div>
         </div>
 
@@ -124,14 +134,16 @@
       class="d-flex flex-column justify-content-center align-items-center"
     >
       <div class="hero-container" data-aos="fade-in">
-        <h1>Alex Smith</h1>
+        {% for data in profile %}
+        <h1>{{data.name}}</h1>
         <p>
           I'm
           <span
             class="typed"
-            data-typed-items="Designer, Developer, Freelancer, Photographer"
+            data-typed-items=" {{data.position1}} , {{data.position2}}, {{data.position3}}, {{data.position4}} "
           ></span>
         </p>
+        {% endfor %}
       </div>
     </section>
     <!-- End Hero -->
