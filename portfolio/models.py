@@ -20,3 +20,27 @@ class Self(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+
+class About(models.Model):
+    freelance = [
+        ('Available', 'Available'),
+        ('Not Available', 'Not Available')
+    ]
+    introduction = models.TextField(max_length=150, null=True, blank=True)
+    title = models.CharField(max_length=50, null=True, blank=True)
+    image = models.ImageField(upload_to='about/', null=True, blank=True)
+    subtitle = models.CharField(max_length=100, null=True, blank=True)
+    date = models.DateField(null=True, blank=True)
+    Website = models.URLField(max_length=100, null=True, blank=True)
+    phone = models.CharField(max_length=30, null=True, blank=True)
+    City = models.CharField(max_length=50, null=True, blank=True)
+    Age = models.IntegerField(null=True, blank=True)
+    Degree = models.CharField(max_length=30, null=True, blank=True)
+    Email = models.CharField(max_length=30, null=True, blank=True)
+    status = models.CharField(
+        max_length=20, choices=freelance, null=True, blank=True)
+    desc = models.TextField(max_length=350, null=True, blank=True)
+
+    # def __str__(self) -> str:
+    #     return self.title
