@@ -1,8 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render ,redirect
+from django.core.mail import send_mail 
+from django.template.loader import render_to_string
 from .models import *
+from .forms import *
 
 
 def index(request):
+
+    form = ContactForm()
     data_profile = Self.objects.all()
     data_about = About.objects.all()
     data_facts = Facts.objects.all()
@@ -13,7 +18,7 @@ def index(request):
     data_resume3 = Resume3.objects.all()
     data_resume4 = Resume4.objects.all()
     data_service = Services.objects.all()
-
+    
 
     context = {
         'profile': data_profile,
@@ -26,5 +31,8 @@ def index(request):
         'resume3': data_resume3,
         'resume4': data_resume4,
         'services': data_service,
+        'form':form,
     }
     return render(request, 'index.html', context)
+
+

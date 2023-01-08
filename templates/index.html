@@ -72,7 +72,7 @@
           />
 
           {% endfor %} {% for data in profile %}
-          <h1 class="text-light"><a href="index.html"> {{data.name}} </a></h1>
+          <h1 class="text-light"><a href="index.html"> {{data.name | default_if_none:" "}} </a></h1>
           {% endfor %}
           <div class="social-links mt-3 text-center">
             {% for data in profile %} {% if data.twitter %}
@@ -135,12 +135,12 @@
     >
       <div class="hero-container" data-aos="fade-in">
         {% for data in profile %}
-        <h1>{{data.name}}</h1>
+        <h1>{{data.name | default_if_none:" "}}</h1>
         <p>
           I'm
           <span
             class="typed"
-            data-typed-items=" {{data.position1}} , {{data.position2}}, {{data.position3}}, {{data.position4}} "
+            data-typed-items=" {{data.position1 | default_if_none:" "}} , {{data.position2 | default_if_none:" "}}, {{data.position3 | default_if_none:" "}}, {{data.position4 | default_if_none:" "}} "
           ></span>
         </p>
         {% endfor %}
@@ -155,51 +155,37 @@
           <div class="section-title">
             <h2>About</h2>
             {% for data in about %}
-            <p>{{data.introduction}}</p>
-            {% endfor %}
+            <p>{{data.introduction | default_if_none:" "}}</p>
           </div>
-
           <div class="row">
             <div class="col-lg-4" data-aos="fade-right">
-              {% for data in about %}
               <img src=" {{data.image.url}} " class="img-fluid" alt="" />
-              {% endfor %}
             </div>
             <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-              {% for data in about %}
-              <h3>{{data.title}}</h3>
-              <p class="fst-italic">{{data.subtitle}}</p>
-              {% endfor %}
+              <h3>{{data.title | default_if_none:" "}}</h3>
+              <p class="fst-italic">{{data.subtitle | default_if_none:" "}}</p>
               <div class="row">
                 <div class="col-lg-6">
                   <ul>
                     <li>
                       <i class="bi bi-chevron-right"></i>
                       <strong>Birthday:</strong>
-                      {% for data in about %}
-                      <span> {{data.date}} </span>
-                      {% endfor %}
+                      <span> {{data.date | default_if_none:" "}} </span>
                     </li>
                     <li>
                       <i class="bi bi-chevron-right"></i>
                       <strong>Website:</strong>
-                      {% for data in about %}
-                      <span> {{data.Website}} </span>
-                      {% endfor %}
+                      <span> {{data.Website | default_if_none:" "}} </span>
                     </li>
                     <li>
                       <i class="bi bi-chevron-right"></i>
                       <strong>Phone:</strong>
-                      {% for data in about %}
-                      <span> {{data.phone}} </span>
-                      {% endfor %}
+                      <span> {{data.phone | default_if_none:" "}} </span>
                     </li>
                     <li>
                       <i class="bi bi-chevron-right"></i>
                       <strong>City:</strong>
-                      {% for data in about %}
-                      <span> {{data.City}} </span>
-                      {% endfor %}
+                      <span> {{data.City | default_if_none:" "}} </span>
                     </li>
                   </ul>
                 </div>
@@ -207,39 +193,30 @@
                   <ul>
                     <li>
                       <i class="bi bi-chevron-right"></i> <strong>Age:</strong>
-                      {% for data in about %}
-                      <span> {{data.Age}} </span>
-                      {% endfor %}
+                      <span> {{data.Age | default_if_none:" "}} </span>
                     </li>
                     <li>
                       <i class="bi bi-chevron-right"></i>
                       <strong>Degree:</strong>
-                      {% for data in about %}
-                      <span> {{data.Degree}} </span>
-                      {% endfor %}
+                      <span> {{data.Degree | default_if_none:" "}} </span>
                     </li>
                     <li>
                       <i class="bi bi-chevron-right"></i>
                       <strong>Email:</strong>
-                      {% for data in about %}
-                      <span> {{data.Email}} </span>
-                      {% endfor %}
+                      <span> {{data.Email | default_if_none:" "}} </span>
                     </li>
                     <li>
                       <i class="bi bi-chevron-right"></i>
                       <strong>Freelance:</strong>
-                      {% for data in about %}
-                      <span> {{data.status}} </span>
-                      {% endfor %}
+                      <span> {{data.status | default_if_none:" "}} </span>
                     </li>
                   </ul>
                 </div>
               </div>
-              {% for data in about %}
-              <p>{{data.desc}}</p>
-              {% endfor %}
+              <p>{{data.desc | default_if_none:" "}}</p>
             </div>
           </div>
+          {% endfor %}
         </div>
       </section>
       <!-- End About Section -->
@@ -250,7 +227,7 @@
           <div class="section-title">
             <h2>Facts</h2>
             {% for data in facts %}
-           <p> {{data.desc}} </p>
+           <p> {{data.main_desc |default_if_none:" " }} </p>
             {% endfor %}
           </div>
 
@@ -264,14 +241,14 @@
                 <span
                   data-purecounter-start="0"
                 {% for data in facts %}
-                  data-purecounter-end=" {{data.total1}}"
+                  data-purecounter-end=" {{data.total1 |default_if_none:"0"}}"
                   {% endfor %}
                   data-purecounter-duration="1"
                   class="purecounter"
                 ></span>
 
                 {% for data in facts %}
-                <p><strong> {{data.title1}} </strong> {{data.desc1}} </p>
+                <p><strong> {{data.title1 |default_if_none:" "}} </strong> {{data.desc1 |default_if_none:" "}} </p>
                 {% endfor %}
 
               </div>
@@ -288,7 +265,7 @@
                   data-purecounter-start="0"
 
                   {% for data in facts %}
-                  data-purecounter-end=" {{data.total2}}"
+                  data-purecounter-end=" {{data.total2 |default_if_none:"0" }}"
                   {% endfor %}
 
                   data-purecounter-duration="1"
@@ -296,7 +273,7 @@
                 ></span>
 
                 {% for data in facts %}
-                <p><strong> {{data.title2}} </strong> {{data.desc2}} </p>
+                <p><strong> {{data.title2 |default_if_none:" "}} </strong> {{data.desc2 |default_if_none:" "}} </p>
                 {% endfor %}
 
               </div>
@@ -313,14 +290,14 @@
                   data-purecounter-start="0"
 
                   {% for data in facts %}
-                  data-purecounter-end=" {{data.total3}}"
+                  data-purecounter-end=" {{data.total3 |default_if_none:"0"}}"
                   {% endfor %}
                   data-purecounter-duration="1"
                   class="purecounter"
                 ></span>
 
                 {% for data in facts %}
-                <p><strong> {{data.title3}} </strong> {{data.desc3}} </p>
+                <p><strong> {{data.title3 |default_if_none:" "}} </strong> {{data.desc3 |default_if_none:" "}} </p>
                 {% endfor %}
 
               </div>
@@ -337,14 +314,14 @@
                   data-purecounter-start="0"
 
                   {% for data in facts %}
-                  data-purecounter-end=" {{data.total4}}"
+                  data-purecounter-end=" {{data.total4 |default_if_none:"0"}}"
                   {% endfor %}
                   data-purecounter-duration="1"
                   class="purecounter"
                 ></span>
 
                 {% for data in facts %}
-                <p><strong> {{data.title4}} </strong> {{data.desc4}} </p>
+                <p><strong> {{data.title4 |default_if_none:" "}} </strong> {{data.desc4 |default_if_none:" "}} </p>
                 {% endfor %}
 
               </div>
@@ -361,7 +338,7 @@
             <h2>Skills</h2>
             {% for data in skills %}
             <p>
-            {{data.desc}}
+            {{data.desc | default_if_none:" "}}
             </p>
             {% endfor %}
           </div>
@@ -371,14 +348,14 @@
               
               <div class="progress">
                 {% for data in skills %}
-                <span class="skill"> {{data.skill1_t}} <i class="val"> {{data.skill1_v}}%</i></span>
+                <span class="skill"> {{data.skill1_t | default_if_none:"Comming Soon "}} <i class="val"> {{data.skill1_v | default_if_none:" "}}%</i></span>
                 {% endfor %}
                 <div class="progress-bar-wrap">
                   <div
                     class="progress-bar"
                     role="progressbar"
                     {% for data in skills %}
-                    aria-valuenow=" {{data.skill1_v}}"
+                    aria-valuenow=" {{data.skill1_v | default_if_none:" "}}"
                     {% endfor %}
                     aria-valuemin="0"
                     aria-valuemax="100"
@@ -389,14 +366,14 @@
 
               <div class="progress">
                 {% for data in skills %}
-                <span class="skill"> {{data.skill2_t}} <i class="val"> {{data.skill2_v}}%</i></span>
+                <span class="skill"> {{data.skill2_t | default_if_none:" Comming Soon"}} <i class="val"> {{data.skill2_v | default_if_none:" "}}%</i></span>
                 {% endfor %}
                 <div class="progress-bar-wrap">
                   <div
                     class="progress-bar"
                     role="progressbar"
                     {% for data in skills %}
-                    aria-valuenow=" {{data.skill2_v}}"
+                    aria-valuenow=" {{data.skill2_v | default_if_none:" "}}"
                     {% endfor %}
                     aria-valuemin="0"
                     aria-valuemax="100"
@@ -406,14 +383,14 @@
 
               <div class="progress">
                 {% for data in skills %}
-                <span class="skill"> {{data.skill3_t}} <i class="val"> {{data.skill3_v}}%</i></span>
+                <span class="skill"> {{data.skill3_t | default_if_none:" Comming Soon "}} <i class="val"> {{data.skill3_v | default_if_none:""}}%</i></span>
                 {% endfor %}
                 <div class="progress-bar-wrap">
                   <div
                     class="progress-bar"
                     role="progressbar"
                     {% for data in skills %}
-                    aria-valuenow=" {{data.skill3_v}}"
+                    aria-valuenow=" {{data.skill3_v | default_if_none:" "}}"
                     {% endfor %}
                     aria-valuemin="0"
                     aria-valuemax="100"
@@ -426,14 +403,14 @@
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
               <div class="progress">
                 {% for data in skills %}
-                <span class="skill"> {{data.skill4_t}} <i class="val"> {{data.skill4_v}}%</i></span>
+                <span class="skill"> {{data.skill4_t | default_if_none:"Comming Soon"}} <i class="val"> {{data.skill4_v | default_if_none:" "}}%</i></span>
                 {% endfor %}
                 <div class="progress-bar-wrap">
                   <div
                     class="progress-bar"
                     role="progressbar"
                     {% for data in skills %}
-                    aria-valuenow=" {{data.skill4_v}}"
+                    aria-valuenow=" {{data.skill4_v | default_if_none:" "}}"
                     {% endfor %}
                     aria-valuemin="0"
                     aria-valuemax="100"
@@ -443,14 +420,14 @@
 
               <div class="progress">
                 {% for data in skills %}
-                <span class="skill"> {{data.skill5_t}} <i class="val"> {{data.skill5_v}}%</i></span>
+                <span class="skill"> {{data.skill5_t | default_if_none:" Comming Soon"}} <i class="val"> {{data.skill5_v | default_if_none:" "}}%</i></span>
                 {% endfor %}
                 <div class="progress-bar-wrap">
                   <div
                     class="progress-bar"
                     role="progressbar"
                     {% for data in skills %}
-                    aria-valuenow=" {{data.skill5_v}}"
+                    aria-valuenow=" {{data.skill5_v | default_if_none:" " }}"
                     {% endfor %}
                     aria-valuemin="0"
                     aria-valuemax="100"
@@ -460,14 +437,14 @@
 
               <div class="progress">
                 {% for data in skills %}
-                <span class="skill"> {{data.skill6_t}} <i class="val"> {{data.skill6_v}}%</i></span>
+                <span class="skill"> {{data.skill6_t | default_if_none:"Comming Soon " }}  <i class="val"> {{data.skill6_v | default_if_none:" "}}%</i></span>
                 {% endfor %}
                 <div class="progress-bar-wrap">
                   <div
                     class="progress-bar"
                     role="progressbar"
                     {% for data in skills %}
-                    aria-valuenow=" {{data.skill6_v}}"
+                    aria-valuenow=" {{data.skill6_v | default_if_none:" " }}"
                     {% endfor %}
                     aria-valuemin="0"
                     aria-valuemax="100"
@@ -487,7 +464,7 @@
             <h2>Resume</h2>
           {% for data in resume %}
           <p>
-            {{data.desc}}
+            {{data.desc |default_if_none:" "}}
           </p>
           {% endfor %}
           </div>
@@ -495,43 +472,43 @@
           <div class="row">
             <div class="col-lg-6" data-aos="fade-up">
               {% for data in resume %}
-              <h3 class="resume-title"> {{data.main_title}} </h3>
+              <h3 class="resume-title"> {{data.main_title |default_if_none:" "}} </h3>
               
               <div class="resume-item pb-0">
-                <h4> {{data.name}} </h4>
+                <h4> {{data.name |default_if_none:" "}} </h4>
                 <p>
                   <em>
-                    {{data.subtitle}}
+                    {{data.subtitle |default_if_none:" "}}
                    </em>
                 </p>
                 <ul>
-                  <li> {{data.adress}} </li>
-                  <li> {{data.phone}} </li>
-                  <li> {{data.Email}} </li>
+                  <li> {{data.adress |default_if_none:" "}} </li>
+                  <li> {{data.phone |default_if_none:" "}} </li>
+                  <li> {{data.Email |default_if_none:" "}} </li>
                 </ul>
               </div>
               {% endfor %}
 
               {% for data in resume1 %}
               
-              <h3 class="resume-title"> {{data.main_title}} </h3>
+              <h3 class="resume-title"> {{data.main_title |default_if_none:" "}} </h3>
               <div class="resume-item">
-                <h4> {{data.title}} </h4>
-                <h5> {{data.period}} </h5>
-                <p><em> {{data.place}} </em></p>
+                <h4> {{data.title |default_if_none:" "}} </h4>
+                <h5> {{data.period |default_if_none:" "}} </h5>
+                <p><em> {{data.place |default_if_none:" "}} </em></p>
                 <p>
-                  {{data.desc}}
+                  {{data.desc |default_if_none:" "}}
                 </p>
               </div>
               {% endfor %}
 
               {% for data in resume2 %}
-              <div class="resume-item">
-                <h4> {{data.title}} </h4>
-                <h5> {{data.period}} </h5>
-                <p><em> {{data.place}} </em></p>
+              <div class="resume-item ">
+                <h4> {{data.title |default_if_none:" "}} </h4>
+                <h5> {{data.period |default_if_none:" "}} </h5>
+                <p><em> {{data.place |default_if_none:" "}} </em></p>
                 <p>
-                {{data.desc}}
+                {{data.desc |default_if_none:" "}}
                 </p>
               </div>
               
@@ -543,20 +520,20 @@
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
 
               {% for data in resume3 %}
-              <h3 class="resume-title"> {{data.main_title}} </h3>
+              <h3 class="resume-title"> {{data.main_title |default_if_none:" "}} </h3>
               <div class="resume-item">
-                <h4> {{data.title}} </h4>
-                <h5> {{data.period}} </h5>
-                <p><em> {{data.place}} </em></p>
+                <h4> {{data.title |default_if_none:" "}} </h4>
+                <h5> {{data.period |default_if_none:" "}} </h5>
+                <p><em> {{data.place |default_if_none:" "}} </em></p>
                 <ul>
                   <li>
-                    {{data.desc1}}
+                    {{data.desc1 |default_if_none:" "}}
                   </li>
                   <li>
-                    {{data.desc2}}
+                    {{data.desc2 |default_if_none:" " }}
                   </li>
                   <li>
-                    {{data.desc3}}
+                    {{data.desc3 |default_if_none:" "}}
                   </li>
                   <li>
                     {{data.desc4}}
@@ -568,18 +545,18 @@
 
               {% for data in resume4 %}
               <div class="resume-item">
-                <h4> {{data.title}} </h4>
-                <h5> {{data.period}} </h5>
-                <p><em> {{data.place}} </em></p>
+                <h4> {{data.title |default_if_none:" "}} </h4>
+                <h5> {{data.period |default_if_none:" "}} </h5>
+                <p><em> {{data.place |default_if_none:" "}} </em></p>
                 <ul>
                   <li>
-                    {{data.desc1}}
+                    {{data.desc1 |default_if_none:" "}}
                   </li>
                   <li>
-                    {{data.desc2}}
+                    {{data.desc2 |default_if_none:" "}}
                   </li>
                   <li>
-                    {{data.desc3}}
+                    {{data.desc3 |default_if_none:" "}}
                   </li>
                   <li>
                     {{data.desc4}}
@@ -835,7 +812,7 @@
             <h2>Services</h2>
             {% for data in services %}
             <p>
-            {{data.main_desc}}
+            {{data.main_desc | default_if_none:" "}}
             </p>
             {% endfor %}
           </div>
@@ -845,9 +822,9 @@
             {% for data in services %}
             <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
               <div class="icon"><i class="bi bi-briefcase"></i></div>
-              <h4 class="title"><a href=""> {{data.title1}} </a></h4>
+              <h4 class="title"><a href=""> {{data.title1 | default_if_none:" "}} </a></h4>
               <p class="description">
-                {{data.desc1}}
+                {{data.desc1 | default_if_none:" "}}
               </p>
             </div>
             
@@ -860,9 +837,9 @@
               data-aos-delay="100"
             >
               <div class="icon"><i class="bi bi-card-checklist"></i></div>
-              <h4 class="title"><a href="">{{data.title2}}</a></h4>
+              <h4 class="title"><a href="">{{data.title2 | default_if_none:" "}}</a></h4>
               <p class="description">
-                {{data.desc2}}
+                {{data.desc2 | default_if_none:" "}}
               </p>
             </div>
 
@@ -876,9 +853,9 @@
               data-aos-delay="200"
             >
               <div class="icon"><i class="bi bi-bar-chart"></i></div>
-              <h4 class="title"><a href="">{{data.title3}}</a></h4>
+              <h4 class="title"><a href="">{{data.title3 | default_if_none:" "}}</a></h4>
               <p class="description">
-                {{data.desc3}}
+                {{data.desc3 | default_if_none:" "}}
               </p>
             </div>
             
@@ -891,9 +868,9 @@
           data-aos-delay="300"
         >
           <div class="icon"><i class="bi bi-binoculars"></i></div>
-          <h4 class="title"><a href="">{{data.title4}}</a></h4>
+          <h4 class="title"><a href="">{{data.title4 | default_if_none:" "}}</a></h4>
           <p class="description">
-            {{data.desc4}}
+            {{data.desc4 | default_if_none:" "}}
           </p>
         </div>
           {% endfor %}
@@ -906,9 +883,9 @@
           data-aos-delay="400"
         >
           <div class="icon"><i class="bi bi-brightness-high"></i></div>
-          <h4 class="title"><a href="">{{data.title5}}</a></h4>
+          <h4 class="title"><a href="">{{data.title5| default_if_none:" " }}</a></h4>
           <p class="description">
-            {{data.desc5}}
+            {{data.desc5 | default_if_none:" "}}
           </p>
         </div>
           {% endfor %}
@@ -921,9 +898,9 @@
               data-aos-delay="500"
             >
               <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-              <h4 class="title"><a href="">{{data.title6}}</a></h4>
+              <h4 class="title"><a href="">{{data.title6 | default_if_none:" "}}</a></h4>
               <p class="description">
-                {{data.desc6}}
+                {{data.desc6 | default_if_none:" "}}
               </p>
             </div>
             {% endfor %}
@@ -982,51 +959,28 @@
 
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
               <form
-                action="forms/contact.php"
                 method="post"
-                role="form"
+                
                 class="php-email-form"
               >
+              {% csrf_token %}
                 <div class="row">
                   <div class="form-group col-md-6">
                     <label for="name">Your Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      id="name"
-                      required
-                    />
+                    {{form.name}}
                   </div>
                   <div class="form-group col-md-6">
                     <label for="name">Your Email</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      name="email"
-                      id="email"
-                      required
-                    />
+                    {{form.email}}
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="name">Subject</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="subject"
-                    id="subject"
-                    required
-                  />
+                  {{form.subject}}
                 </div>
                 <div class="form-group">
                   <label for="name">Message</label>
-                  <textarea
-                    class="form-control"
-                    name="message"
-                    rows="10"
-                    required
-                  ></textarea>
+                  {{form.message}}
                 </div>
                 <div class="my-3">
                   <div class="loading">Loading</div>

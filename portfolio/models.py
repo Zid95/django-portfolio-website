@@ -3,7 +3,7 @@ from django.db import models
 
 class Self(models.Model):
     name = models.CharField(max_length=30)
-    image = models.ImageField(upload_to='profile/', null=True, blank=True)
+    image = models.ImageField(upload_to='profile/', default='profile/0.png')
     twitter = models.URLField(max_length=100, null=True, blank=True)
     facebook = models.URLField(max_length=100, null=True, blank=True)
     instagram = models.URLField(max_length=100, null=True, blank=True)
@@ -29,7 +29,7 @@ class About(models.Model):
     ]
     introduction = models.TextField(max_length=450, null=True, blank=True)
     title = models.CharField(max_length=50, null=True, blank=True)
-    image = models.ImageField(upload_to='about/', null=True, blank=True)
+    image = models.ImageField(upload_to='about/', default='about/0.png')
     subtitle = models.CharField(max_length=100, null=True, blank=True)
     date = models.DateField(null=True, blank=True)
     Website = models.URLField(max_length=100, null=True, blank=True)
