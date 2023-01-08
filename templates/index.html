@@ -220,7 +220,7 @@
                     </li>
                     <li>
                       <i class="bi bi-chevron-right"></i>
-                      <strong>PhEmailone:</strong>
+                      <strong>Email:</strong>
                       {% for data in about %}
                       <span> {{data.Email}} </span>
                       {% endfor %}
@@ -264,12 +264,16 @@
                 <span
                   data-purecounter-start="0"
                 {% for data in facts %}
-                  data-purecounter-end=" {{data.happyclients}}"
+                  data-purecounter-end=" {{data.total1}}"
                   {% endfor %}
                   data-purecounter-duration="1"
                   class="purecounter"
                 ></span>
-                <p><strong>Happy Clients</strong> consequuntur quae</p>
+
+                {% for data in facts %}
+                <p><strong> {{data.title1}} </strong> {{data.desc1}} </p>
+                {% endfor %}
+
               </div>
             </div>
 
@@ -284,13 +288,17 @@
                   data-purecounter-start="0"
 
                   {% for data in facts %}
-                  data-purecounter-end=" {{data.Projects}}"
+                  data-purecounter-end=" {{data.total2}}"
                   {% endfor %}
 
                   data-purecounter-duration="1"
                   class="purecounter"
                 ></span>
-                <p><strong>Projects</strong> adipisci atque cum quia aut</p>
+
+                {% for data in facts %}
+                <p><strong> {{data.title2}} </strong> {{data.desc2}} </p>
+                {% endfor %}
+
               </div>
             </div>
 
@@ -305,12 +313,16 @@
                   data-purecounter-start="0"
 
                   {% for data in facts %}
-                  data-purecounter-end=" {{data.Support}}"
+                  data-purecounter-end=" {{data.total3}}"
                   {% endfor %}
                   data-purecounter-duration="1"
                   class="purecounter"
                 ></span>
-                <p><strong>Hours Of Support</strong> aut commodi quaerat</p>
+
+                {% for data in facts %}
+                <p><strong> {{data.title3}} </strong> {{data.desc3}} </p>
+                {% endfor %}
+
               </div>
             </div>
 
@@ -325,12 +337,16 @@
                   data-purecounter-start="0"
 
                   {% for data in facts %}
-                  data-purecounter-end=" {{data.Hardworks}}"
+                  data-purecounter-end=" {{data.total4}}"
                   {% endfor %}
                   data-purecounter-duration="1"
                   class="purecounter"
                 ></span>
-                <p><strong>Hard Workers</strong> rerum asperiores dolor</p>
+
+                {% for data in facts %}
+                <p><strong> {{data.title4}} </strong> {{data.desc4}} </p>
+                {% endfor %}
+
               </div>
             </div>
           </div>
@@ -469,105 +485,111 @@
         <div class="container">
           <div class="section-title">
             <h2>Resume</h2>
-            <p>
-              Magnam dolores commodi suscipit. Necessitatibus eius consequatur
-              ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam
-              quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
-              Quia fugiat sit in iste officiis commodi quidem hic quas.
-            </p>
+          {% for data in resume %}
+          <p>
+            {{data.desc}}
+          </p>
+          {% endfor %}
           </div>
 
           <div class="row">
             <div class="col-lg-6" data-aos="fade-up">
-              <h3 class="resume-title">Sumary</h3>
+              {% for data in resume %}
+              <h3 class="resume-title"> {{data.main_title}} </h3>
+              
               <div class="resume-item pb-0">
-                <h4>Alex Smith</h4>
+                <h4> {{data.name}} </h4>
                 <p>
-                  <em
-                    >Innovative and deadline-driven Graphic Designer with 3+
-                    years of experience designing and developing user-centered
-                    digital/print marketing material from initial concept to
-                    final, polished deliverable.</em
-                  >
+                  <em>
+                    {{data.subtitle}}
+                   </em>
                 </p>
                 <ul>
-                  <li>Portland par 127,Orlando, FL</li>
-                  <li>(123) 456-7891</li>
-                  <li>alice.barkley@example.com</li>
+                  <li> {{data.adress}} </li>
+                  <li> {{data.phone}} </li>
+                  <li> {{data.Email}} </li>
                 </ul>
               </div>
+              {% endfor %}
 
-              <h3 class="resume-title">Education</h3>
+              {% for data in resume1 %}
+              
+              <h3 class="resume-title"> {{data.main_title}} </h3>
               <div class="resume-item">
-                <h4>Master of Fine Arts &amp; Graphic Design</h4>
-                <h5>2015 - 2016</h5>
-                <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
+                <h4> {{data.title}} </h4>
+                <h5> {{data.period}} </h5>
+                <p><em> {{data.place}} </em></p>
                 <p>
-                  Qui deserunt veniam. Et sed aliquam labore tempore sed
-                  quisquam iusto autem sit. Ea vero voluptatum qui ut
-                  dignissimos deleniti nerada porti sand markend
+                  {{data.desc}}
                 </p>
               </div>
+              {% endfor %}
+
+              {% for data in resume2 %}
               <div class="resume-item">
-                <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-                <h5>2010 - 2014</h5>
-                <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
+                <h4> {{data.title}} </h4>
+                <h5> {{data.period}} </h5>
+                <p><em> {{data.place}} </em></p>
                 <p>
-                  Quia nobis sequi est occaecati aut. Repudiandae et iusto quae
-                  reiciendis et quis Eius vel ratione eius unde vitae rerum
-                  voluptates asperiores voluptatem Earum molestiae consequatur
-                  neque etlon sader mart dila
+                {{data.desc}}
                 </p>
               </div>
+              
+              {% endfor %}
+
             </div>
+
+
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-              <h3 class="resume-title">Professional Experience</h3>
+
+              {% for data in resume3 %}
+              <h3 class="resume-title"> {{data.main_title}} </h3>
               <div class="resume-item">
-                <h4>Senior graphic design specialist</h4>
-                <h5>2019 - Present</h5>
-                <p><em>Experion, New York, NY </em></p>
+                <h4> {{data.title}} </h4>
+                <h5> {{data.period}} </h5>
+                <p><em> {{data.place}} </em></p>
                 <ul>
                   <li>
-                    Lead in the design, development, and implementation of the
-                    graphic, layout, and production communication materials
+                    {{data.desc1}}
                   </li>
                   <li>
-                    Delegate tasks to the 7 members of the design team and
-                    provide counsel on all aspects of the project.
+                    {{data.desc2}}
                   </li>
                   <li>
-                    Supervise the assessment of all graphic materials in order
-                    to ensure quality and accuracy of the design
+                    {{data.desc3}}
                   </li>
                   <li>
-                    Oversee the efficient use of production project budgets
-                    ranging from $2,000 - $25,000
+                    {{data.desc4}}
                   </li>
                 </ul>
               </div>
+              {% endfor %}
+
+
+              {% for data in resume4 %}
               <div class="resume-item">
-                <h4>Graphic design specialist</h4>
-                <h5>2017 - 2018</h5>
-                <p><em>Stepping Stone Advertising, New York, NY</em></p>
+                <h4> {{data.title}} </h4>
+                <h5> {{data.period}} </h5>
+                <p><em> {{data.place}} </em></p>
                 <ul>
                   <li>
-                    Developed numerous marketing programs (logos,
-                    brochures,infographics, presentations, and advertisements).
+                    {{data.desc1}}
                   </li>
                   <li>
-                    Managed up to 5 projects or tasks at a given time while
-                    under pressure
+                    {{data.desc2}}
                   </li>
                   <li>
-                    Recommended and consulted with clients on the most
-                    appropriate graphic design
+                    {{data.desc3}}
                   </li>
                   <li>
-                    Created 4+ design presentations and proposals a month for
-                    clients and account managers
+                    {{data.desc4}}
                   </li>
                 </ul>
               </div>
+              
+              {% endfor %}
+
+
             </div>
           </div>
         </div>
@@ -808,234 +830,112 @@
       <!-- ======= Services Section ======= -->
       <section id="services" class="services">
         <div class="container">
+
           <div class="section-title">
             <h2>Services</h2>
+            {% for data in services %}
             <p>
-              Magnam dolores commodi suscipit. Necessitatibus eius consequatur
-              ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam
-              quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
-              Quia fugiat sit in iste officiis commodi quidem hic quas.
+            {{data.main_desc}}
             </p>
+            {% endfor %}
           </div>
 
           <div class="row">
+
+            {% for data in services %}
             <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
               <div class="icon"><i class="bi bi-briefcase"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+              <h4 class="title"><a href=""> {{data.title1}} </a></h4>
               <p class="description">
-                Voluptatum deleniti atque corrupti quos dolores et quas
-                molestias excepturi sint occaecati cupiditate non provident
+                {{data.desc1}}
               </p>
             </div>
+            
+            {% endfor %}
+
+            {% for data in services %}
             <div
               class="col-lg-4 col-md-6 icon-box"
               data-aos="fade-up"
               data-aos-delay="100"
             >
               <div class="icon"><i class="bi bi-card-checklist"></i></div>
-              <h4 class="title"><a href="">Dolor Sitema</a></h4>
+              <h4 class="title"><a href="">{{data.title2}}</a></h4>
               <p class="description">
-                Minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat tarad limino ata
+                {{data.desc2}}
               </p>
             </div>
+
+            {% endfor %}
+
+
+            {% for data in services %}
             <div
               class="col-lg-4 col-md-6 icon-box"
               data-aos="fade-up"
               data-aos-delay="200"
             >
               <div class="icon"><i class="bi bi-bar-chart"></i></div>
-              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
+              <h4 class="title"><a href="">{{data.title3}}</a></h4>
               <p class="description">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur
+                {{data.desc3}}
               </p>
             </div>
-            <div
-              class="col-lg-4 col-md-6 icon-box"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <div class="icon"><i class="bi bi-binoculars"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum
-              </p>
-            </div>
-            <div
-              class="col-lg-4 col-md-6 icon-box"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <div class="icon"><i class="bi bi-brightness-high"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                blanditiis praesentium voluptatum deleniti atque
-              </p>
-            </div>
+            
+            {% endfor %}
+
+          {% for data in services %}
+          <div
+          class="col-lg-4 col-md-6 icon-box"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          <div class="icon"><i class="bi bi-binoculars"></i></div>
+          <h4 class="title"><a href="">{{data.title4}}</a></h4>
+          <p class="description">
+            {{data.desc4}}
+          </p>
+        </div>
+          {% endfor %}
+
+
+          {% for data in services %}
+          <div
+          class="col-lg-4 col-md-6 icon-box"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
+          <div class="icon"><i class="bi bi-brightness-high"></i></div>
+          <h4 class="title"><a href="">{{data.title5}}</a></h4>
+          <p class="description">
+            {{data.desc5}}
+          </p>
+        </div>
+          {% endfor %}
+
+
+            {% for data in services %}
             <div
               class="col-lg-4 col-md-6 icon-box"
               data-aos="fade-up"
               data-aos-delay="500"
             >
               <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-              <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
+              <h4 class="title"><a href="">{{data.title6}}</a></h4>
               <p class="description">
-                Et harum quidem rerum facilis est et expedita distinctio. Nam
-                libero tempore, cum soluta nobis est eligendi
+                {{data.desc6}}
               </p>
             </div>
+            {% endfor %}
+
+
+
           </div>
         </div>
       </section>
       <!-- End Services Section -->
 
-      <!-- ======= Testimonials Section ======= -->
-      <section id="testimonials" class="testimonials section-bg">
-        <div class="container">
-          <div class="section-title">
-            <h2>Testimonials</h2>
-            <p>
-              Magnam dolores commodi suscipit. Necessitatibus eius consequatur
-              ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam
-              quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
-              Quia fugiat sit in iste officiis commodi quidem hic quas.
-            </p>
-          </div>
 
-          <div
-            class="testimonials-slider swiper"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="testimonial-item" data-aos="fade-up">
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Proin iaculis purus consequat sem cure digni ssim donec
-                    porttitora entum suscipit rhoncus. Accusantium quam,
-                    ultricies eget id, aliquam eget nibh et. Maecen aliquam,
-                    risus at semper.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                  <img
-                    src=" {% static 'assets/img/testimonials/testimonials-1.jpg' %} "
-                    class="testimonial-img"
-                    alt=""
-                  />
-                  <h3>Saul Goodman</h3>
-                  <h4>Ceo &amp; Founder</h4>
-                </div>
-              </div>
-              <!-- End testimonial item -->
-
-              <div class="swiper-slide">
-                <div
-                  class="testimonial-item"
-                  data-aos="fade-up"
-                  data-aos-delay="100"
-                >
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Export tempor illum tamen malis malis eram quae irure esse
-                    labore quem cillum quid cillum eram malis quorum velit fore
-                    eram velit sunt aliqua noster fugiat irure amet legam anim
-                    culpa.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                  <img
-                    src=" {% static 'assets/img/testimonials/testimonials-2.jpg' %} "
-                    class="testimonial-img"
-                    alt=""
-                  />
-                  <h3>Sara Wilsson</h3>
-                  <h4>Designer</h4>
-                </div>
-              </div>
-              <!-- End testimonial item -->
-
-              <div class="swiper-slide">
-                <div
-                  class="testimonial-item"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                >
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Enim nisi quem export duis labore cillum quae magna enim
-                    sint quorum nulla quem veniam duis minim tempor labore quem
-                    eram duis noster aute amet eram fore quis sint minim.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                  <img
-                    src=" {% static 'assets/img/testimonials/testimonials-3.jpg' %} "
-                    class="testimonial-img"
-                    alt=""
-                  />
-                  <h3>Jena Karlis</h3>
-                  <h4>Store Owner</h4>
-                </div>
-              </div>
-              <!-- End testimonial item -->
-
-              <div class="swiper-slide">
-                <div
-                  class="testimonial-item"
-                  data-aos="fade-up"
-                  data-aos-delay="300"
-                >
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa
-                    multos export minim fugiat minim velit minim dolor enim duis
-                    veniam ipsum anim magna sunt elit fore quem dolore labore
-                    illum veniam.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                  <img
-                    src=" {% static 'assets/img/testimonials/testimonials-4.jpg' %} "
-                    class="testimonial-img"
-                    alt=""
-                  />
-                  <h3>Matt Brandon</h3>
-                  <h4>Freelancer</h4>
-                </div>
-              </div>
-              <!-- End testimonial item -->
-
-              <div class="swiper-slide">
-                <div
-                  class="testimonial-item"
-                  data-aos="fade-up"
-                  data-aos-delay="400"
-                >
-                  <p>
-                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Quis quorum aliqua sint quem legam fore sunt eram irure
-                    aliqua veniam tempor noster veniam enim culpa labore duis
-                    sunt culpa nulla illum cillum fugiat legam esse veniam culpa
-                    fore nisi cillum quid.
-                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                  </p>
-                  <img
-                    src=" {% static 'assets/img/testimonials/testimonials-5.jpg' %} "
-                    class="testimonial-img"
-                    alt=""
-                  />
-                  <h3>John Larson</h3>
-                  <h4>Entrepreneur</h4>
-                </div>
-              </div>
-              <!-- End testimonial item -->
-            </div>
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
-      </section>
-      <!-- End Testimonials Section -->
 
       <!-- ======= Contact Section ======= -->
       <section id="contact" class="contact">
